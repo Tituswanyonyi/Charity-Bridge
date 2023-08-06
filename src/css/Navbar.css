@@ -1,0 +1,31 @@
+.navbar {
+  background-color: rgb(66, 66, 212);
+  padding: 10px;
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.navbar-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: orangered;
+  font-weight: bold;
+  font-size: 17;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-link:hover {
+  color: #007bff;
+}

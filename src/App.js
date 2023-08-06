@@ -9,6 +9,7 @@ import PrivateRoutes from './PrivateRoutes';
 import DonorDashboard from './Pages/Donor/DonorDashboard';
 import NgoDashboard from './Pages/Ngo/NgoDashboard';
 
+
 const App = () => {
   // Replace this with the actual user data or fetch it from the API or authentication context
   const currentUser = {
@@ -27,8 +28,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<About />} />
           <Route element={<PrivateRoutes currentUser={currentUser} />}>
-            <Route path="/Pages" element={<DonorDashboard />} roles={['Admin', 'Donor']} />
-            <Route path="/Pages" element={<NgoDashboard />} roles={['Admin', 'Ngo']} />
+            <Route path="/Pages/Donor" element={<DonorDashboard />} roles={['Admin', 'Donor']} />
+            <Route path="/Pages/Ngo" element={<NgoDashboard />} roles={['Admin', 'Ngo']} />
           </Route>
         </Routes>
         <Footer />

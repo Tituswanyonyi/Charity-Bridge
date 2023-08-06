@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Navigate } from 'react-router-dom';
 
-const PrivateRoute = ({ element: Component, roles, currentUser }) => {
+const PrivateRoutes = ({ element: Component, roles, currentUser }) => {
   // Check if the user is authenticated and authorized
   const isAuthenticated = !!currentUser;
   const isAuthorized = roles ? roles.includes(currentUser?.role) : true;
@@ -21,4 +21,4 @@ const PrivateRoute = ({ element: Component, roles, currentUser }) => {
   return <Route element={<Component />} />;
 };
 
-export default PrivateRoute;
+export default PrivateRoutes;

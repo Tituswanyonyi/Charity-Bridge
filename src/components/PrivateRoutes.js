@@ -21,4 +21,4 @@ const PrivateRoute = ({ element: Component, roles, currentUser }) => {
   return <Route element={<Component />} />;
 };
 
-export default PrivateRoute;
+export default PrivateRoutes;

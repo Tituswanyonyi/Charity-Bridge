@@ -28,9 +28,18 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Redirect to relevant dashboard
         localStorage.setItem('token', data.token);
-        navigate('/tasklist');
+        
+        // Determine the user's role and redirect to the relevant dashboard
+        if (data.role === 'Admin') {
+          navigate('/AdminDashboard');
+        } else if (data.role === 'NGO') {
+          navigate('/NgoDashboard');
+        } else if (data.role === 'Donor') {
+          navigate('/DonorDashboard');
+        } else {
+          setError('Invalid role.');
+        }
       } else {
         setError(data.error);
       }
@@ -42,13 +51,10 @@ const Login = () => {
 
   // Handle logout
   const handleLogout = () => {
-    // Clear the token from local storage
     localStorage.removeItem('token');
-    // Redirect to the login page
     navigate('/login');
   };
 
-  // Check if the user is logged in
   const isLoggedIn = !!localStorage.getItem('token');
 
   return (
@@ -75,7 +81,6 @@ const Login = () => {
         <button type="button" onClick={handleLogin}>
           Login
         </button>
-        {/* Logout button */}
         {isLoggedIn && (
           <button type="button" onClick={handleLogout}>
             Logout

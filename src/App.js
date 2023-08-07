@@ -8,10 +8,11 @@ import About from './components/About';
 import PrivateRoutes from './PrivateRoutes';
 import DonorDashboard from './Pages/Donor/DonorDashboard';
 import NgoDashboard from './Pages/Ngo/NgoDashboard';
+import AdminDashboard from './Pages/Admin/AdminDasboard';
 
 
 const App = () => {
-  // Replace this with the actual user data or fetch it from the API or authentication context
+
   const currentUser = {
     // Your user data here...
     name: 'John Doe',
@@ -30,6 +31,7 @@ const App = () => {
           <Route element={<PrivateRoutes currentUser={currentUser} />}>
             <Route path="/Pages/Donor" element={<DonorDashboard />} roles={['Admin', 'Donor']} />
             <Route path="/Pages/Ngo" element={<NgoDashboard />} roles={['Admin', 'Ngo']} />
+            <Route path="/Pages/Admin" element={<AdminDashboard />} roles={['Admin']} />
           </Route>
         </Routes>
         <Footer />

@@ -5,7 +5,6 @@ const DonationReceived = () => {
   const donations = [
     { id: 1, ngoId: 'NGO001', title: 'Education Program', amount: 500, date: '2023-08-01' },
     { id: 2, ngoId: 'NGO002', title: 'Healthcare Project', amount: 1000, date: '2023-08-02' },
-    // Add more donation objects here as needed
   ];
 
   return (

@@ -13,7 +13,7 @@ const SignupForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/users/signup', {
+            const response = await fetch('http://localhost:5000/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,9 +82,9 @@ const SignupForm = () => {
                         onChange={(e) => setUserType(e.target.value)}
                     >
                         <option value="">Select User Type</option>
-                        <option value="admin">Admin</option>
-                        <option value="ngo">NGO</option>
-                        <option value="donor">Donor</option>
+                        <option value="admin">admin</option>
+                        <option value="ngo">ngo</option>
+                        <option value="donor">donor</option>
                     </select>
                 </div>
                 <button type="submit">Sign Up</button>

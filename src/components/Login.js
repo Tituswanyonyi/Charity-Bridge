@@ -5,41 +5,34 @@ import '../css/LoginForm.css';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     setError('');
+    setSuccessMessage('');
 
-    if (!username || !password) {
-      setError('Username and password are required.');
+    if (!username || !password || !userType) {
+      setError('Username, password, and userType are required.');
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/login', {
+      const response = await fetch(`http://localhost:5000/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, password, userType }),
       });
-
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('token', data.token);
-        
-        // Determine the user's role and redirect to the relevant dashboard
-        if (data.role === 'Admin') {
-          navigate('/AdminDashboard');
-        } else if (data.role === 'NGO') {
-          navigate('/NgoDashboard');
-        } else if (data.role === 'Donor') {
-          navigate('/DonorDashboard');
-        } else {
-          setError('Invalid role.');
-        }
+        localStorage.setItem('token', data.access_token);
+        setSuccessMessage('Login successful! Redirecting...');
+        determineUserRoleAndRedirect(data.redirect_url);
       } else {
         setError(data.error);
       }
@@ -49,7 +42,10 @@ const Login = () => {
     }
   };
 
-  // Handle logout
+  const determineUserRoleAndRedirect = (redirectUrl) => {
+    navigate(redirectUrl);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -60,7 +56,8 @@ const Login = () => {
   return (
     <div className="login-form-container">
       <h2>Login</h2>
-      {error && <p>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
+      {successMessage && <p className="success-message">{successMessage}</p>}
       <form>
         <div className="form-group">
           <label>Username:</label>
@@ -76,6 +73,14 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>UserType:</label>
+          <input
+            type="text"
+            value={userType}
+            onChange={(e) => setUserType(e.target.value)}
           />
         </div>
         <button type="button" onClick={handleLogin}>

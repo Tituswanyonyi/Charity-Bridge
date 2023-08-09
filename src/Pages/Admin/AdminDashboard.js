@@ -50,7 +50,7 @@ function AdminDashboard() {
       <h1>Admin Dashboard</h1>
       <ul>
         <li>
-          <Link to="/ViewDonationRequests">View Donation Requests</Link>
+          <Link to="/ngoDonationRequests">ngoDonatioRequests</Link>
         </li>
         <li>
           <Link to="/ViewDonations">View Donations</Link>

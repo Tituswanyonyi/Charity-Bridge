@@ -1,0 +1,78 @@
+// import React, { useState, useEffect } from "react";
+// import NavBar from "./NavBar";
+
+// function Ngos() {
+//   const [ngos, setNgos] = useState([]);
+//   const [searchById, setSearchById] = useState("");
+
+//   useEffect(() => {
+//     fetchNgos();
+//   }, )
+
+//   const fetchNgos = () => {
+//     fetch("http://127.0.0.1:5000/ngos")
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log(data);
+//         const filteredNgos = data.filter((ngo) =>
+//           ngo.id.toString().includes(searchById)
+//         );
+//         const updatedNgos = filteredNgos.map((ngo) => ({
+//           ...ngo,
+//           currentImageIndex: 0,
+//         }));
+//         setNgos(updatedNgos);
+//       })
+//       .catch((error) => console.error("Error fetching ngos:", error));
+//   };
+
+//   const handleClick = () => {
+//     if (searchById !== "") {
+//       fetchNgos();
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <NavBar />
+//       <button onClick={handleClick}></button>
+//       <input
+//         className="search"
+//         type="search"
+//         value={searchById}
+//         onChange={(e) => setSearchById(e.target.value)}
+//         placeholder="Search Ngo"
+//       />
+
+//       {ngos.map((recipe) => {
+//         if (searchById && !ngo.id.toString().includes(searchById)) {
+//           return null; // Skip rendering if searchById doesn't match
+//         }
+
+//         return (
+//           <div className="Ngo-preview" key={ngo.id}>
+//             <div className="NGOs">
+//               <h2>{ngo.username}</h2>
+//               <h3>{ngo.email}</h3>
+//               <h4>{recipe.}</h4>
+//               <h5>{recipe.description}</h5>
+//               <img src={recipe.image} alt="recipe" />
+
+//               <ul>
+//                 {Array.isArray(recipe.ingredients) ? (
+//                   recipe.ingredients.map((ingredient, index) => (
+//                     <li key={index}>{ingredient}</li>
+//                   ))
+//                 ) : (
+//                   <li>{recipe.ingredient}</li>
+//                 )}
+//               </ul>
+//             </div>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }
+
+// export default Recipes;

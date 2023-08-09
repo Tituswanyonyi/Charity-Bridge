@@ -31,8 +31,11 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem('token', data.access_token);
-        setSuccessMessage('Login successful! Redirecting...');
-        determineUserRoleAndRedirect(data.redirect_url);
+        setSuccessMessage('Login successful!');
+        navigate('/Pages/Ngo')
+        navigate('/Pages/Donor')
+        navigate('/Pages/admin')
+        // determineUserRoleAndRedirect(data.redirect_url);
       } else {
         setError(data.error);
       }
@@ -42,9 +45,9 @@ const Login = () => {
     }
   };
 
-  const determineUserRoleAndRedirect = (redirectUrl) => {
-    navigate(redirectUrl);
-  };
+  // const determineUserRoleAndRedirect = (redirectUrl) => {
+  //   navigate(redirectUrl);
+  // };
 
   const handleLogout = () => {
     localStorage.removeItem('token');

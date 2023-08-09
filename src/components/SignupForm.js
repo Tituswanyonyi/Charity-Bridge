@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from "react-router-dom"
 import '../css/SignupForm.css';
 
 const SignupForm = () => {
@@ -8,6 +9,7 @@ const SignupForm = () => {
     const [userType, setUserType] = useState(''); // State to store user type
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,6 +33,7 @@ const SignupForm = () => {
             if (response.ok) {
                 setMessage(data.message);
                 setError('');
+                navigate('/login')
             } else {
                 setError(data.error);
                 setMessage('');

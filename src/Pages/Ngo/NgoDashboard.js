@@ -7,7 +7,7 @@ const NgoDashboard = () => {
       <h1>Welcome to Ngo Dashboard</h1>
       <ul>
         <li>
-          <Link to="/donationrequests">View Donation Requests</Link>
+          <Link to="/ngoDonationRequests">ngoDonationRequests</Link>
         </li>
         <li>
           <Link to="/
@@ -18,6 +18,9 @@ const NgoDashboard = () => {
         </li>
         <li>
           <Link to="/logout">Logout</Link>
+        </li>
+        <li>
+          <Link to="/DonationRequests">Donation Requests</Link>
         </li>
       </ul>
     </div>

@@ -7,7 +7,7 @@ const DonorDashboard = () => {
       <h1>Welcome to Donor Dashboard</h1>
       <ul>
         <li>
-          <Link to="/viewdonationrequests">View Donation Requests</Link>
+          <Link to="/ngoDonationRequests">View ngoDonationRequests</Link>
         </li>
         <li>
           <Link to="/makedonation">Make a Donation</Link>

@@ -46,34 +46,35 @@ function AdminDashboard() {
   };
 
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <ul>
-        <li>
-          <Link to="/ngoDonationRequests">ngoDonatioRequests</Link>
-        </li>
-        <li>
-          <Link to="/ViewDonations">View Donations</Link>
-        </li>
-        <li>
-          <Link to="/Navbar">History</Link>
-        </li>
-        <li>
-          <Link to="/logout">Logout</Link>
-        </li>
-      </ul>
-
-      <h2>NGOs</h2>
-      {ngos.map((ngo) => (
-        <DeleteButton key={ngo.id} item={ngo} onDelete={() => handleRemoveNgo(ngo.id)} />
-      ))}
-
-      <h2>Donors</h2>
-      {donors.map((donor) => (
-        <DeleteButton key={donor.id} item={donor} onDelete={() => handleRemoveDonor(donor.id)} />
-      ))}
-    </div>
-  );
+      <div style={{ fontFamily: 'Arial', textAlign: 'center', padding: '20px' }}>
+        <h1 style={{ fontSize: '24px', marginBottom: '10px', color: 'red' }}>Welcome to Admin Dashboard</h1>
+        <ul style={{ listStyle: 'none', padding: '0', marginBottom: '20px' }}>
+          <li style={{ margin: '5px 0' }}>
+            <Link to="/ngoDonationRequests" style={{ textDecoration: 'none', color: '#007BFF' }}>ngoDonationRequests</Link>
+          </li>
+          <li style={{ margin: '5px 0' }}>
+            <Link to="/ViewDonations" style={{ textDecoration: 'none', color: '#007BFF' }}>View Donations</Link>
+          </li>
+          <li style={{ margin: '5px 0' }}>
+            <Link to="/Navbar" style={{ textDecoration: 'none', color: '#007BFF' }}>History</Link>
+          </li>
+          <li style={{ margin: '5px 0' }}>
+            <Link to="/logout" style={{ textDecoration: 'none', color: '#007BFF' }}>Logout</Link>
+          </li>
+        </ul>
+    
+        <h2 style={{ fontSize: '20px', marginBottom: '10px', color: 'red' }}>NGOs</h2>
+        {ngos.map((ngo) => (
+          <DeleteButton key={ngo.id} item={ngo} onDelete={() => handleRemoveNgo(ngo.id)} />
+        ))}
+    
+        <h2 style={{ fontSize: '20px', marginBottom: '10px', color: 'red' }}>Donors</h2>
+        {donors.map((donor) => (
+          <DeleteButton key={donor.id} item={donor} onDelete={() => handleRemoveDonor(donor.id)} />
+        ))}
+      </div>
+    );
+    
 }
 
 export default AdminDashboard;

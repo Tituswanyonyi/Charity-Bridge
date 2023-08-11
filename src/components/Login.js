@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/LoginForm.css';
-
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -9,16 +8,13 @@ const Login = () => {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
-
   const handleLogin = async () => {
     setError('');
     setSuccessMessage('');
-
     if (!username || !password || !userType) {
       setError('Username, password, and userType are required.');
       return;
     }
-
     try {
       const response = await fetch(`http://localhost:5000/login`, {
         method: 'POST',
@@ -28,7 +24,6 @@ const Login = () => {
         body: JSON.stringify({ username, password, userType }),
       });
       const data = await response.json();
-
       if (response.ok) {
         localStorage.setItem('token', data.access_token);
         setSuccessMessage('Login successful!');
@@ -44,18 +39,14 @@ const Login = () => {
       console.error(error);
     }
   };
-
   // const determineUserRoleAndRedirect = (redirectUrl) => {
   //   navigate(redirectUrl);
   // };
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
-
   const isLoggedIn = !!localStorage.getItem('token');
-
   return (
     <div className="login-form-container">
       <h2>Login</h2>
@@ -101,5 +92,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
